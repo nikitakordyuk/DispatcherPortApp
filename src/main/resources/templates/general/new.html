@@ -1,65 +1,76 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet">
     <meta charset="UTF-8">
     <title>Add new</title>
 </head>
-<body>
+<body style="align-items: center">
 
-<form th:method="POST" th:action="@{/general/new}" th:object="${general}">
+<form th:method="POST" th:action="@{/general/new}" th:object="${general}" class="card-form">
 
-    <label for="name">Номер машины</label>
     <input type="text" th:field="*{carNumber}" id="name"/>
+    <label for="name">Номер машины</label>
 
     <div style="color: red" th:if="${#fields.hasErrors('carNumber')}" th:errors="*{carNumber}">carNumber error</div>
     <br/>
 
-    <label for="trailerNumber">Номер прицепа</label>
     <input type="text" th:field="*{trailerNumber}" id="trailerNumber"/>
+    <label for="trailerNumber">Номер прицепа</label>
 
-    <div style="color: red" th:if="${#fields.hasErrors('trailerNumber')}" th:errors="*{trailerNumber}">trailerNumber error</div>
+    <div style="color: red" th:if="${#fields.hasErrors('trailerNumber')}" th:errors="*{trailerNumber}">trailerNumber
+        error
+    </div>
     <br/>
 
-    <label for="driverLicenseNumber">Номер вод. удостоверения</label>
     <input type="text" th:field="*{driverLicenseNumber}" id="driverLicenseNumber"/>
+    <label for="driverLicenseNumber">Номер вод. удостоверения</label>
 
-    <div style="color: red" th:if="${#fields.hasErrors('driverLicenseNumber')}" th:errors="*{driverLicenseNumber}">driverLicenseNumber error</div>
+    <div style="color: red" th:if="${#fields.hasErrors('driverLicenseNumber')}" th:errors="*{driverLicenseNumber}">
+        driverLicenseNumber error
+    </div>
     <br/>
 
-    <label for="nomenclature">Номеклатура</label>
     <input type="text" th:field="*{nomenclature}" id="nomenclature"/>
+    <label for="nomenclature">Номеклатура</label>
 
-    <div style="color: red" th:if="${#fields.hasErrors('nomenclature')}" th:errors="*{nomenclature}">nomenclature error</div>
+    <div style="color: red" th:if="${#fields.hasErrors('nomenclature')}" th:errors="*{nomenclature}">nomenclature
+        error
+    </div>
     <br/>
 
-    <label for="sender">Отправитель</label>
     <input type="text" th:field="*{sender}" id="sender"/>
+    <label for="sender">Отправитель</label>
 
     <div style="color: red" th:if="${#fields.hasErrors('sender')}" th:errors="*{sender}">sender error</div>
     <br/>
 
-    <label for="vehicleType">Тип</label>
     <input type="text" th:field="*{vehicleType}" id="vehicleType"/>
+    <label for="vehicleType">Тип</label>
 
-    <div style="color: red" th:if="${#fields.hasErrors('vehicleType')}" th:errors="*{vehicleType}">vehicleType error</div>
+    <div style="color: red" th:if="${#fields.hasErrors('vehicleType')}" th:errors="*{vehicleType}">vehicleType error
+    </div>
     <br/>
 
-    <label for="phoneNumber">Номер телефона</label>
     <input type="text" th:field="*{phoneNumber}" id="phoneNumber"/>
+    <label for="phoneNumber">Номер телефона</label>
 
-    <div style="color: red" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">phoneNumber error</div>
+    <div style="color: red" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">phoneNumber error
+    </div>
     <br/>
 
-    <label for="fullName">ФИО</label>
     <input type="text" th:field="*{fullName}" id="fullName"/>
+    <label for="fullName">ФИО</label>
 
     <div style="color: red" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">fullName error</div>
     <br/>
 
-    <label for="dateOfCreation">Дата создания</label>
     <input type="text" th:field="*{dateOfCreation}" id="dateOfCreation"/>
+    <label for="dateOfCreation">Дата создания</label>
 
-    <div style="color: red" th:if="${#fields.hasErrors('dateOfCreation')}" th:errors="*{dateOfCreation}">dateOfCreation error</div>
+    <div style="color: red" th:if="${#fields.hasErrors('dateOfCreation')}" th:errors="*{dateOfCreation}">dateOfCreation
+        error
+    </div>
     <br/>
 
     <p> Заехал? <br/>
@@ -71,10 +82,10 @@
     </p>
 
     <div style="color: red" th:if="${#fields.hasErrors('come')}" th:errors="*{come}">isCome error</div>
-    <br/>
 
-    <input type="submit" value="Create">
+    <input type="submit" value="Добавить">
 </form>
 
 </body>
 </html>
+

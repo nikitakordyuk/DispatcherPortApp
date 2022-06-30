@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +39,47 @@ public class GeneralService {
         toUpdate.setId(id);
 //        toUpdate.setDateOfCreation(Timestamp.valueOf(LocalDateTime.now()));
         generalRepository.save(toUpdate);
+    }
+
+    public List<General> search(String option, String query) {
+        Optional<List<General>> generals = Optional.empty();
+        switch (option) {
+            case "nomenclature":
+                generals =
+                    Optional.ofNullable(generalRepository.findGeneralsByNomenclatureIgnoreCaseStartingWith(query));
+                break;
+            case "trailerNumber":
+                generals =
+                        Optional.ofNullable(generalRepository.findGeneralsByTrailerNumberIgnoreCaseStartingWith(query));
+                break;
+            case "carNumber":
+                generals = Optional.ofNullable(generalRepository.findGeneralsByCarNumberIgnoreCaseStartingWith(query));
+                break;
+            case "driverLicenseNumber":
+                generals = Optional.ofNullable(generalRepository.findGeneralsByDriverLicenseNumberIgnoreCaseStartingWith(query));
+                break;
+            case "sender":
+                generals = Optional.ofNullable(generalRepository.findGeneralsBySenderIgnoreCaseStartingWith(query));
+                break;
+            case "vehicleType":
+                generals = Optional.ofNullable(generalRepository.findGeneralsByVehicleTypeIgnoreCaseStartingWith(query));
+                break;
+            case "phoneNumber":
+                generals = Optional.ofNullable(generalRepository.findGeneralsByPhoneNumberIgnoreCaseStartingWith(query));
+                break;
+            case "fullName":
+                generals = Optional.ofNullable(generalRepository.findGeneralsByFullNameIgnoreCaseStartingWith(query));
+                break;
+            case "dateOfCreation":
+                generals = Optional.ofNullable(
+                        generalRepository.findGeneralsByDateOfCreationStartingWith(Timestamp.valueOf(query)));
+                break;
+            case "isCome":
+                generals = Optional.ofNullable(
+                        generalRepository.findGeneralsByIsCome(Boolean.parseBoolean(query)));
+        }
+
+        return generals.orElse(Collections.emptyList());
     }
 
     public void deleteById(long id) {

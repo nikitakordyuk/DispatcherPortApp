@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Search</title>
 </head>
 <body>
+
+
+<form th:method="POST" th:action="@{/general/search}">
+    <!--/{queue}(queue=)-->
+    <label for="options">Искать по:</label>
+    <select th:object="${option}" id="options" name="option">
+        <option th:each="option : ${options}" th:value="${option}" th:text="${option}" >
+        </option>
+    </select>
+
+    <label for="search">Найти запись:
+        <input type="search" name="search" value="" id="search"/>
+    </label>
+
+    <label for="submit">
+        <input type="submit" value="Search" id="submit"/>
+    </label>
+</form>
+
+<br/>
+
+<div th:unless="${searchResult.isEmpty()}" th:each="result : ${searchResult}">
+    <p th:text="${result.getCarNumber() + ', ' + result.getTrailerNumber() + ', ' + result.getDriverLicenseNumber()
+       + ', ' + result.getNomenclature() + ', ' + result.getSender() + ', ' + result.getVehicleType() + ', '
+       + result.getPhoneNumber() + ', ' + result.getFullName() + ', ' + result.getDateOfCreation()
+       + ', ' + result.isCome()}"></p>
+    <span th:if="${searchResult==null}">Ничего не найдено</span>
+</div>
+
 
 </body>
 </html>
