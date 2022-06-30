@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+
+<div th:object="${generals}" th:each="general : ${generals}">
+    <a th:href="@{/general/{id}(id=${general.getId()})}"
+       th:text="${general.getCarNumber() + ', ' + general.getTrailerNumber() + ', ' + general.getDriverLicenseNumber()
+       + ', ' + general.getNomenclature() + ', ' + general.getSender() + ', ' + general.getVehicleType() + ', '
+       + general.getPhoneNumber() + ', ' + general.getFullName() + ', ' + general.getDateOfCreation()
+       + ', ' + general.isCome()}">general</a>
+</div>
+
+
+<br/>
+<hr/>
+<a href="general/new">Добавить запись</a>
+<br/>
+<a href="general/search">Поиск</a>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+<p th:text="${general.getCarNumber() + ', ' + general.getTrailerNumber() + ', ' + general.getDriverLicenseNumber()
+       + ', ' + general.getNomenclature() + ', ' + general.getSender() + ', ' + general.getVehicleType() + ', '
+       + general.getPhoneNumber() + ', ' + general.getFullName() + ', ' + general.getDateOfCreation()
+       + ', ' + general.isCome()}">VALUE</p>
+
+<br/>
+<hr/>
+
+<a th:href="@{/general/{id}/edit(id=${general.getId()})}">Edit</a>
+
+<form th:method="DELETE" th:action="@{/general/{id}(id=${general.getId()})}">
+  <input type="submit" value="Delete"/>
+</form>
+
+</body>
+</html>
