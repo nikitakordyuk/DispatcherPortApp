@@ -146,7 +146,7 @@ public class DocxCreation {
 
         paragraph = table.getRow(rowNumber).getCell(cellNumber).getParagraphs().get(0);
         paragraph.setAlignment(ParagraphAlignment.CENTER);
-        paragraph.setVerticalAlignment(TextAlignment.CENTER);
+        table.getRow(rowNumber).getCell(cellNumber).setVerticalAlignment(XWPFTableCell.XWPFVertAlign.CENTER);
 
         return paragraph;
     }
