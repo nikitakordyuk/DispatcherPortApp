@@ -1,11 +1,12 @@
 package com.port.DispatcherPortApp.util;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class FieldsNames {
     public static Map<String, String> fieldsNames() {
-        Map<String, String> res = new HashMap<>();
+        Map<String, String> res = new LinkedHashMap<>();
         res.put("Номер машины", "carNumber");
         res.put("Номер прицепа", "trailerNumber");
         res.put("Номер вод. удостоверения", "driverLicenseNumber");

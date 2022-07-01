@@ -29,4 +29,6 @@ public interface GeneralRepository extends JpaRepository<General, Long> {
 
     List<General> findGeneralsByIsCome(boolean query);
 
+    General findGeneralByCarNumber(String carNumber);
+
 }

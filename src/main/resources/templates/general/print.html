@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Print</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/general/print}" th:object="${general}">
+    <label for="print">Print:</label>
+
+    <input type="checkbox" th:each="general : ${generals}" th:value="${general}" th:text="${general}"
+           th:field="*{carNumber}" id="print"/>
+
+<input type="submit" value="Go" />
+</form>
+
+</body>
+</html>

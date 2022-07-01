@@ -2,6 +2,7 @@ package com.port.DispatcherPortApp.controllers;
 
 import com.port.DispatcherPortApp.models.General;
 import com.port.DispatcherPortApp.services.GeneralService;
+import com.port.DispatcherPortApp.services.DocxCreation;
 import com.port.DispatcherPortApp.util.FieldsNames;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,13 +11,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.lang.reflect.Field;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 public class GeneralController {
@@ -100,5 +101,25 @@ public class GeneralController {
         model.addAttribute("searchResult", searchResult);
 
         return "general/search";
+    }
+
+    @GetMapping("/general/print")
+    public String print(Model model, @ModelAttribute("general") General general) {
+        model.addAttribute("generals",
+                generalService.generalList()
+                .stream()
+                .map(General::getCarNumber)
+                .collect(Collectors.toList()));
+
+        return "general/print";
+    }
+
+    @PostMapping("/general/print")
+    public String print(@RequestParam("carNumber") List<String> print) throws IOException {
+        DocxCreation docxCreation = new DocxCreation(generalService);
+        docxCreation.createDocx(print);
+
+
+        return "redirect:/general/print";
     }
 }

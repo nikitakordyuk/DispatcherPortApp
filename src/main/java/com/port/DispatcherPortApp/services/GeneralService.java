@@ -31,6 +31,12 @@ public class GeneralService {
         return general.orElse(null);
     }
 
+    public General findByCarNumber(String carNumber) {
+        Optional<General> general = Optional.ofNullable(generalRepository.findGeneralByCarNumber(carNumber));
+
+        return general.orElse(null);
+    }
+
     public void saveGeneral(General general) {
         generalRepository.save(general);
     }
@@ -85,4 +91,6 @@ public class GeneralService {
     public void deleteById(long id) {
         generalRepository.deleteById(id);
     }
+
+
 }
