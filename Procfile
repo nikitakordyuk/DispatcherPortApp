@@ -1,1 +1,1 @@
-web: java -XX:+UseContainerSupport -Xmx300m -Xss512k -XX:CICompilerCount=2 -XX:+UseG1GC -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintTenuringDistribution -XX:+UnlockDiagnosticVMOptions -Dspring.profiles.active=prod -Dserver.port=$PORT -jar target/DispatcherPortApp-0.0.1-SNAPSHOT.jar
+web: java -XX:+UseContainerSupport -Xmx300m -Xss512k -XX:CICompilerCount=2 -XX:+UseG1GC -XX:+PrintGCDetails -XX:+UnlockDiagnosticVMOptions -Dspring.profiles.active=prod -Dserver.port=$PORT -jar target/DispatcherPortApp-0.0.1-SNAPSHOT.jar
