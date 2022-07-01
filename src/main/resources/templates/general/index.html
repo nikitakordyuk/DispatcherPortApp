@@ -3,23 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
+    <link th:href="@{/css/table.css}" rel="stylesheet" />
 </head>
 <body>
 
-<div th:object="${generals}" th:each="general : ${generals}">
-    <a th:href="@{/general/{id}(id=${general.getId()})}"
-       th:text="${general.getCarNumber() + ', ' + general.getTrailerNumber() + ', ' + general.getDriverLicenseNumber()
-       + ', ' + general.getNomenclature() + ', ' + general.getSender() + ', ' + general.getVehicleType() + ', '
-       + general.getPhoneNumber() + ', ' + general.getFullName() + ', ' + general.getDateOfCreation()
-       + ', ' + general.isCome()}">general</a>
-</div>
+<!--<div th:object="${generals}" th:each="general : ${generals}">-->
+<!--    <a th:href="@{/general/{id}(id=${general.getId()})}"-->
+<!--       th:text="${general.getCarNumber() + ', ' + general.getTrailerNumber() + ', ' + general.getDriverLicenseNumber()-->
+<!--       + ', ' + general.getNomenclature() + ', ' + general.getSender() + ', ' + general.getVehicleType() + ', '-->
+<!--       + general.getPhoneNumber() + ', ' + general.getFullName() + ', ' + general.getDateOfCreation()-->
+<!--       + ', ' + general.isCome()}">general</a>-->
+<!--</div>-->
 
+
+<!--<br/>-->
+<!--<hr/>-->
+<!--<a href="general/new">Добавить запись</a>-->
+<!--<br/>-->
+<!--<a href="general/search">Поиск</a>-->
+
+<h2></h2>
+<div class="table-wrapper" th:object="${general}" >
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>Номер машины</th>
+            <th>Номер прицепа</th>
+            <th>Номер вод. удостоверения</th>
+            <th>Номеклатура</th>
+            <th>Отправитель</th>
+            <th>Тип</th>
+            <th>Номер телефона</th>
+            <th>ФИО</th>
+            <th>Дата создания</th>
+            <th>Заехал</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="general : ${generals}">
+            <td>
+                <a th:href="@{/general/{id}(id=${general.getId()})}" th:text="${general.getCarNumber()}"
+            style="text-align: center; font-size: 17px;">
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{/general/{id}(id=${general.getId()})}" th:text="${general.getTrailerNumber()}"
+                   style="text-align: center; font-size: 17px;">
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{/general/{id}(id=${general.getId()})}" th:text="${general.getDriverLicenseNumber()}"
+                   style="text-align: center; font-size: 17px;">
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{/general/{id}(id=${general.getId()})}" th:text="${general.getNomenclature()}"
+                   style="text-align: center; font-size: 17px;">
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{/general/{id}(id=${general.getId()})}" th:text="${general.getSender()}"
+                   style="text-align: center; font-size: 17px;">
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{/general/{id}(id=${general.getId()})}" th:text="${general.getVehicleType()}"
+                   style="text-align: center; font-size: 17px;">
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{/general/{id}(id=${general.getId()})}" th:text="${general.getPhoneNumber()}"
+                   style="text-align: center; font-size: 17px;">
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{/general/{id}(id=${general.getId()})}" th:text="${general.getFullName()}"
+                   style="text-align: center; font-size: 17px;">
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{/general/{id}(id=${general.getId()})}" th:text="${general.getDateOfCreation()}"
+                   style="text-align: center; font-size: 17px;">
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{/general/{id}(id=${general.getId()})}" th:if="${general.isCome()}" th:text="Да"
+                   style="text-align: center; font-size: 17px;">
+                </a>
+                <a th:href="@{/general/{id}(id=${general.getId()})}" th:unless="${general.isCome()}" th:text="Нет"
+                   style="text-align: center; font-size: 17px;">
+                </a>
+            </td>
+
+        </tr>
+        <tbody>
+    </table>
+</div>
 
 <br/>
 <hr/>
-<a href="general/new">Добавить запись</a>
+<a href="general/new" style="font-size: 17px; color: black">Добавить запись</a>
 <br/>
-<a href="general/search">Поиск</a>
+<a href="general/search" style="font-size: 17px; color: black">Поиск</a>
 
 </body>
 </html>
