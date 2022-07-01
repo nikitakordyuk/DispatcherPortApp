@@ -3,17 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Print</title>
+    <link th:href="@{/css/print.css}" rel="stylesheet">
 </head>
 <body>
 
+<div class="grid-container">
+    <div class="box">
+
 <form th:method="POST" th:action="@{/general/print}" th:object="${general}">
-    <label for="print">Print:</label>
+    <span style="font-size: 21px; text-align: center">Печатать:</span>
 
-    <input type="checkbox" th:each="general : ${generals}" th:value="${general}" th:text="${general}"
-           th:field="*{carNumber}" id="print"/>
+    <ul style="list-style: none; padding-inline-start: 0; font-size: 21px; font-family: 'Times New Roman', sans-serif">
 
-<input type="submit" value="Go" />
+        <li role="option" th:each="general : ${generals}">
+
+            <input type="checkbox" th:value="${general}" th:field="*{carNumber}" th:id="${general}"/>
+            <label th:for="${general}" th:text="${general}"></label>
+
+        </li>
+    </ul>
+<!--    <select id="print" th:field="*{carNumber}" multiple="multiple">-->
+<!--        <option th:each="general : ${generals}" th:value="${general}" th:text="${general}">-->
+<!--    </select>-->
+
+<input type="submit" value="Печать" style="font-size: 16px" />
 </form>
-
+    </div>
+</div>
 </body>
 </html>
