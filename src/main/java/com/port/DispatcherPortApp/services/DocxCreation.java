@@ -3,9 +3,7 @@ package com.port.DispatcherPortApp.services;
 import com.port.DispatcherPortApp.models.General;
 import com.port.DispatcherPortApp.util.FieldsNames;
 import com.port.DispatcherPortApp.util.FileDownloader;
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
-import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.*;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.*;
 
 import java.io.FileOutputStream;
@@ -33,45 +31,100 @@ public class DocxCreation {
 
         XWPFTable table = document.createTable(generals.size() + 1, 10);
 
+        CTSectPr sectPr = document.getDocument().getBody().getSectPr();
+        if (sectPr == null) sectPr = document.getDocument().getBody().addNewSectPr();
+
+        CTPageMar pageMar = sectPr.getPgMar();
+        if (pageMar == null) pageMar = sectPr.addNewPgMar();
+
+        pageMar.setLeft(BigInteger.valueOf(360));
+        pageMar.setRight(BigInteger.valueOf(360));
+        pageMar.setTop(BigInteger.valueOf(360));
+        pageMar.setBottom(BigInteger.valueOf(360));
+        pageMar.setFooter(BigInteger.valueOf(360));
+        pageMar.setHeader(BigInteger.valueOf(360));
+        pageMar.setGutter(BigInteger.valueOf(0));
+
         Object[] objects = FieldsNames.fieldsNames().keySet().toArray();
 
         for (int j = 0; j < 10; j++) {
-            table.getRow(0).getCell(j).setText(objects[j].toString());
+            XWPFParagraph xwpfParagraph = table.getRow(0).getCell(j).getParagraphs().get(0);
+
+            table.getRow(0).getCell(j).setVerticalAlignment(XWPFTableCell.XWPFVertAlign.CENTER);
+            xwpfParagraph.setAlignment(ParagraphAlignment.CENTER);
+
+            XWPFRun run1 = xwpfParagraph.createRun();
+
+            run1.setFontSize(14);
+            run1.setFontFamily("Times New Roman");
+            run1.setBold(true);
+            run1.setText(objects[j].toString());
         }
         for (int i = 1; i < table.getNumberOfRows(); i++) {
 
             for (int y = 0; y < 10; y++) {
+                XWPFRun run1 = applyStyles(i, y, table).createRun();
                 switch (y) {
                     case 0:
-                        table.getRow(i).getCell(y).setText(generals.get(i - 1).getCarNumber());
+                        run1.setText(generals.get(i - 1).getCarNumber());
+                        run1.setFontFamily("Times New Roman");
+                        run1.setFontSize(13);
+
                         break;
                     case 1:
-                        table.getRow(i).getCell(y).setText(generals.get(i - 1).getTrailerNumber());
+                        run1.setText(generals.get(i - 1).getTrailerNumber());
+                        run1.setFontFamily("Times New Roman");
+                        run1.setFontSize(13);
+
                         break;
                     case 2:
-                        table.getRow(i).getCell(y).setText(generals.get(i - 1).getDriverLicenseNumber());
+                        run1.setText(generals.get(i - 1).getDriverLicenseNumber());
+                        run1.setFontFamily("Times New Roman");
+                        run1.setFontSize(13);
+
                         break;
                     case 3:
-                        table.getRow(i).getCell(y).setText(generals.get(i - 1).getNomenclature());
+                        run1.setText(generals.get(i - 1).getNomenclature());
+                        run1.setFontFamily("Times New Roman");
+                        run1.setFontSize(13);
+
                         break;
                     case 4:
-                        table.getRow(i).getCell(y).setText(generals.get(i - 1).getSender());
+                        run1.setText(generals.get(i - 1).getSender());
+                        run1.setFontFamily("Times New Roman");
+                        run1.setFontSize(13);
+
                         break;
                     case 5:
-                        table.getRow(i).getCell(y).setText(generals.get(i - 1).getVehicleType());
+                        run1.setText(generals.get(i - 1).getVehicleType());
+                        run1.setFontFamily("Times New Roman");
+                        run1.setFontSize(13);
+
                         break;
                     case 6:
-                        table.getRow(i).getCell(y).setText(generals.get(i - 1).getPhoneNumber());
+                        run1.setText(generals.get(i - 1).getPhoneNumber());
+                        run1.setFontFamily("Times New Roman");
+                        run1.setFontSize(13);
+
                         break;
                     case 7:
-                        table.getRow(i).getCell(y).setText(generals.get(i - 1).getFullName());
+                        run1.setText(generals.get(i - 1).getFullName());
+                        run1.setFontFamily("Times New Roman");
+                        run1.setFontSize(13);
+
                         break;
                     case 8:
-                        table.getRow(i).getCell(y).setText(String.valueOf(generals.get(i - 1).getDateOfCreation()));
+                        run1.setText(String.valueOf(generals.get(i - 1).getDateOfCreation()));
+                        run1.setFontFamily("Times New Roman");
+                        run1.setFontSize(13);
+
                         break;
                     case 9:
                         String s = generals.get(i - 1).isCome() ? "Да" : "Нет";
-                        table.getRow(i).getCell(y).setText(s);
+                        run1.setText(s);
+                        run1.setFontFamily("Times New Roman");
+                        run1.setFontSize(13);
+
                         break;
                 }
             }
@@ -86,6 +139,16 @@ public class DocxCreation {
         return out;
 
         //FileDownloader.download("/output/createdWord2_.docx");
+    }
+
+    private static XWPFParagraph applyStyles(int rowNumber, int cellNumber, XWPFTable table) {
+        XWPFParagraph paragraph;
+
+        paragraph = table.getRow(rowNumber).getCell(cellNumber).getParagraphs().get(0);
+        paragraph.setAlignment(ParagraphAlignment.CENTER);
+        paragraph.setVerticalAlignment(TextAlignment.CENTER);
+
+        return paragraph;
     }
 
     private static void changeOrientation(XWPFDocument document, String orientation) {
