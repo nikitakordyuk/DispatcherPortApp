@@ -21,7 +21,7 @@ public class DocxCreation {
         this.generalService = generalService;
     }
 
-    public void createDocx(List<String> print) throws IOException {
+    public FileOutputStream createDocx(List<String> print) throws IOException {
         List<General> generals = new ArrayList<>();
         for (String carNumber : print) {
             generals.add(generalService.findByCarNumber(carNumber));
@@ -35,10 +35,10 @@ public class DocxCreation {
 
         Object[] objects = FieldsNames.fieldsNames().keySet().toArray();
 
+        for (int j = 0; j < 10; j++) {
+            table.getRow(0).getCell(j).setText(objects[j].toString());
+        }
         for (int i = 1; i < table.getNumberOfRows(); i++) {
-            for (int j = 0; j < 10; j++) {
-                table.getRow(0).getCell(j).setText(objects[j].toString());
-            }
 
             for (int y = 0; y < 10; y++) {
                 switch (y) {
@@ -82,6 +82,8 @@ public class DocxCreation {
         document.write(out);
         out.close();
         document.close();
+
+        return out;
 
         //FileDownloader.download("/output/createdWord2_.docx");
     }

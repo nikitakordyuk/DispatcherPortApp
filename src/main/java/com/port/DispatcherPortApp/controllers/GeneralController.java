@@ -114,12 +114,12 @@ public class GeneralController {
         return "general/print";
     }
 
-    @PostMapping("/general/print")
-    public String print(@RequestParam("carNumber") List<String> print) throws IOException {
-        DocxCreation docxCreation = new DocxCreation(generalService);
-        docxCreation.createDocx(print);
-
-
-        return "redirect:/general/print";
-    }
+//    @PostMapping("/general/print")
+//    public String print(@RequestParam("carNumber") List<String> print) throws IOException {
+//        DocxCreation docxCreation = new DocxCreation(generalService);
+//        docxCreation.createDocx(print);
+//
+//
+//        return "redirect:/general/print";
+//    }
 }
