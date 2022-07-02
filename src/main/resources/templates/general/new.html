@@ -1,90 +1,93 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet">
+    <link th:href="@{/css/add_form.css}" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Add new</title>
 </head>
-<body style="align-items: center">
+<body>
 
-<form th:method="POST" th:action="@{/general/new}" th:object="${general}" class="card-form">
+<div class="container">
+    <form th:method="POST" th:action="@{/general/new}" th:object="${general}">
 
-    <input type="text" th:field="*{carNumber}" id="name"/>
-    <label for="name">Номер машины</label>
+        <label for="name">Номер машины</label>
+        <input type="text" th:field="*{carNumber}" id="name"/>
 
-    <div style="color: red" th:if="${#fields.hasErrors('carNumber')}" th:errors="*{carNumber}">carNumber error</div>
-    <br/>
+        <div style="color: red" th:if="${#fields.hasErrors('carNumber')}" th:errors="*{carNumber}">carNumber error</div>
+        <br/>
 
-    <input type="text" th:field="*{trailerNumber}" id="trailerNumber"/>
-    <label for="trailerNumber">Номер прицепа</label>
+        <label for="trailerNumber">Номер прицепа</label>
+        <input type="text" th:field="*{trailerNumber}" id="trailerNumber"/>
 
-    <div style="color: red" th:if="${#fields.hasErrors('trailerNumber')}" th:errors="*{trailerNumber}">trailerNumber
-        error
-    </div>
-    <br/>
+        <div style="color: red" th:if="${#fields.hasErrors('trailerNumber')}" th:errors="*{trailerNumber}">trailerNumber
+            error
+        </div>
+        <br/>
 
-    <input type="text" th:field="*{driverLicenseNumber}" id="driverLicenseNumber"/>
-    <label for="driverLicenseNumber">Номер вод. удостоверения</label>
+        <label for="driverLicenseNumber">Номер вод. удостоверения</label>
+        <input type="text" th:field="*{driverLicenseNumber}" id="driverLicenseNumber"/>
 
-    <div style="color: red" th:if="${#fields.hasErrors('driverLicenseNumber')}" th:errors="*{driverLicenseNumber}">
-        driverLicenseNumber error
-    </div>
-    <br/>
+        <div style="color: red" th:if="${#fields.hasErrors('driverLicenseNumber')}" th:errors="*{driverLicenseNumber}">
+            driverLicenseNumber error
+        </div>
+        <br/>
 
-    <input type="text" th:field="*{nomenclature}" id="nomenclature"/>
-    <label for="nomenclature">Номеклатура</label>
+        <label for="nomenclature">Номеклатура</label>
+        <input type="text" th:field="*{nomenclature}" id="nomenclature"/>
 
-    <div style="color: red" th:if="${#fields.hasErrors('nomenclature')}" th:errors="*{nomenclature}">nomenclature
-        error
-    </div>
-    <br/>
+        <div style="color: red" th:if="${#fields.hasErrors('nomenclature')}" th:errors="*{nomenclature}">nomenclature
+            error
+        </div>
+        <br/>
 
-    <input type="text" th:field="*{sender}" id="sender"/>
-    <label for="sender">Отправитель</label>
+        <label for="sender">Отправитель</label>
+        <input type="text" th:field="*{sender}" id="sender"/>
 
-    <div style="color: red" th:if="${#fields.hasErrors('sender')}" th:errors="*{sender}">sender error</div>
-    <br/>
+        <div style="color: red" th:if="${#fields.hasErrors('sender')}" th:errors="*{sender}">sender error</div>
+        <br/>
 
-    <input type="text" th:field="*{vehicleType}" id="vehicleType"/>
-    <label for="vehicleType">Тип</label>
+        <label for="vehicleType">Тип</label>
+        <input type="text" th:field="*{vehicleType}" id="vehicleType"/>
 
-    <div style="color: red" th:if="${#fields.hasErrors('vehicleType')}" th:errors="*{vehicleType}">vehicleType error
-    </div>
-    <br/>
+        <div style="color: red" th:if="${#fields.hasErrors('vehicleType')}" th:errors="*{vehicleType}">vehicleType error
+        </div>
+        <br/>
 
-    <input type="text" th:field="*{phoneNumber}" id="phoneNumber"/>
-    <label for="phoneNumber">Номер телефона</label>
+        <label for="phoneNumber">Номер телефона</label>
+        <input type="text" th:field="*{phoneNumber}" id="phoneNumber"/>
 
-    <div style="color: red" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">phoneNumber error
-    </div>
-    <br/>
+        <div style="color: red" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">phoneNumber error
+        </div>
+        <br/>
 
-    <input type="text" th:field="*{fullName}" id="fullName"/>
-    <label for="fullName">ФИО</label>
+        <label for="fullName">ФИО</label>
+        <input type="text" th:field="*{fullName}" id="fullName"/>
 
-    <div style="color: red" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">fullName error</div>
-    <br/>
+        <div style="color: red" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">fullName error</div>
+        <br/>
 
-    <input type="text" th:field="*{dateOfCreation}" id="dateOfCreation"/>
-    <label for="dateOfCreation">Дата создания</label>
+        <label for="dateOfCreation">Дата создания</label>
+        <input type="text" th:field="*{dateOfCreation}" id="dateOfCreation"/>
 
-    <div style="color: red" th:if="${#fields.hasErrors('dateOfCreation')}" th:errors="*{dateOfCreation}">dateOfCreation
-        error
-    </div>
-    <br/>
+        <div style="color: red" th:if="${#fields.hasErrors('dateOfCreation')}" th:errors="*{dateOfCreation}">
+            dateOfCreation
+            error
+        </div>
+        <br/>
 
-    <p> Заехал? <br/>
-        <label for="choice1">Да</label>
-        <input type="radio" id="choice1" name="true" value="true" th:field="*{come}"/>
+        <p> Заехал? <br/>
+            <label for="choice1">Да</label>
+            <input type="radio" id="choice1" name="true" value="true" th:field="*{come}"/>
 
-        <label for="choice2">Нет</label>
-        <input type="radio" id="choice2" name="false" value="false" th:field="*{come}"/>
-    </p>
+            <label for="choice2">Нет</label>
+            <input type="radio" id="choice2" name="false" value="false" th:field="*{come}"/>
+        </p>
 
-    <div style="color: red" th:if="${#fields.hasErrors('come')}" th:errors="*{come}">isCome error</div>
+        <div style="color: red" th:if="${#fields.hasErrors('come')}" th:errors="*{come}">isCome error</div>
 
-    <input type="submit" value="Добавить">
-</form>
+        <input class="registerbtn" type="submit" value="Добавить">
+    </form>
+</div>
 
 </body>
 </html>

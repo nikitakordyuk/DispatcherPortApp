@@ -6,27 +6,6 @@
     <link th:href="@{/css/table.css}" rel="stylesheet">
 </head>
 <body>
-<!--<div class="card">-->
-<!--    <div>-->
-<!--&lt;!&ndash;        <p th:text="${general.getCarNumber() + ', ' + general.getTrailerNumber() + ', ' + general.getDriverLicenseNumber()&ndash;&gt;-->
-<!--&lt;!&ndash;       + ', ' + general.getNomenclature() + ', ' + general.getSender() + ', ' + general.getVehicleType() + ', '&ndash;&gt;-->
-<!--&lt;!&ndash;       + general.getPhoneNumber() + ', ' + general.getFullName() + ', ' + general.getDateOfCreation()&ndash;&gt;-->
-<!--&lt;!&ndash;       + ', ' + general.isCome()}">VALUE&ndash;&gt;-->
-<!--&lt;!&ndash;        </p>&ndash;&gt;-->
-
-
-<!--        <p th:text="${general.getCarNumber()}"></p>-->
-<!--        <p th:text="${general.getTrailerNumber()}"></p>-->
-<!--        <p th:text="${general.getDriverLicenseNumber()}"></p>-->
-<!--        <p th:text="${general.getNomenclature()}"></p>-->
-<!--        <p th:text="${general.getSender()}"></p>-->
-<!--        <p th:text="${general.getVehicleType()}"></p>-->
-<!--        <p th:text="${general.getPhoneNumber()}"></p>-->
-<!--        <p th:text="${general.getFullName()}"></p>-->
-<!--        <p th:text="${general.isCome()}"></p>-->
-<!--        <p th:text="${general.getDateOfCreation()}"></p>-->
-<!--    </div>-->
-<!--</div>-->
 
 <h2></h2>
 
@@ -48,47 +27,43 @@
         </thead>
         <tbody>
         <tr>
-            <td th:text="${general.getCarNumber()}" style="text-align: center;">
+            <td th:text="${general.getCarNumber()}">
             </td>
 
-            <td th:text="${general.getTrailerNumber()}" style="text-align: center;">
+            <td th:text="${general.getTrailerNumber()}">
             </td>
 
-            <td th:text="${general.getDriverLicenseNumber()}" style="text-align: center;">
+            <td th:text="${general.getDriverLicenseNumber()}">
             </td>
 
-            <td th:text="${general.getNomenclature()}" style="text-align: center;">
+            <td th:text="${general.getNomenclature()}">
             </td>
 
-            <td th:text="${general.getSender()}" style="text-align: center;">
+            <td th:text="${general.getSender()}">
             </td>
 
-            <td th:text="${general.getVehicleType()}" style="text-align: center;">
+            <td th:text="${general.getVehicleType()}">
             </td>
 
-            <td th:text="${general.getPhoneNumber()}"
-            style="text-align: center;">
+            <td th:text="${general.getPhoneNumber()}">
             </td>
 
-            <td th:text="${general.getFullName()}" style="text-align: center;">
+            <td th:text="${general.getFullName()}">
             </td>
 
-            <td th:text="${general.getDateOfCreation()}" style="text-align: center;">
+            <td th:text="${general.getDateOfCreation()}">
             </td>
 
             <td>
-               <p th:if="${general.isCome()}" th:text="Да"
-                style="text-align: center;">
+               <p th:if="${general.isCome()}" th:text="Да">
                </p>
-                <p th:unless="${general.isCome()}" th:text="Нет"
-                style="text-align: center;">
+                <p th:unless="${general.isCome()}" th:text="Нет">
                </p>
             </td>
         </tr>
         <tbody>
     </table>
 </div>
-
 
 <div>
     <br/>

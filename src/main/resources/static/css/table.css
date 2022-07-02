@@ -4,6 +4,8 @@
     -moz-box-sizing: border-box;
 }
 body{
+    font-family: "Times New Roman", sans-serif;
+    font-size: 18px;
     background: rgba( 71, 147, 227, 1);
 }
 h2{
