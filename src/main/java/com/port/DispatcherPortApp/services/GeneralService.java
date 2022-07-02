@@ -88,6 +88,10 @@ public class GeneralService {
         return generals.orElse(Collections.emptyList());
     }
 
+    public List<General> findMoreThanOneByCarNumber(String carNumber) {
+        return generalRepository.findGeneralsByCarNumber(carNumber);
+    }
+
     public void deleteById(long id) {
         generalRepository.deleteById(id);
     }

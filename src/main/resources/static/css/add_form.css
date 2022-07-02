@@ -33,6 +33,11 @@ input[type=text]:focus, input[type=password]:focus {
     outline: none;
 }
 
+input[type=text] {
+    font-family: "Times New Roman", sans-serif;
+    font-size: 19px;
+}
+
 /* Overwrite default styles of hr */
 hr {
     border: 1px solid #f1f1f1;
@@ -70,4 +75,11 @@ a {
 .signin {
     background-color: #f1f1f1;
     text-align: center;
+}
+
+.MyFooter {
+    word-spacing: 3px;
+    text-align: center;
+    font-size: 20px;
+    color: black;
 }

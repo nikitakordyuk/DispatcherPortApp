@@ -31,4 +31,6 @@ public interface GeneralRepository extends JpaRepository<General, Long> {
 
     General findGeneralByCarNumber(String carNumber);
 
+    List<General> findGeneralsByCarNumber(String carNumber);
+
 }

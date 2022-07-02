@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Search</title>
+    <link th:href="@{/css/search.css}" rel="stylesheet">
 </head>
 <body>
 
@@ -10,7 +11,7 @@
 <form th:method="POST" th:action="@{/general/search}">
     <!--/{queue}(queue=)-->
     <label for="options">Искать по:</label>
-    <select th:object="${option}" id="options" name="option">
+    <select th:object="${option}" id="options" name="option" style="font-size: 16px">
         <option th:each="option : ${options}" th:value="${option}" th:text="${option}" >
         </option>
     </select>
@@ -20,7 +21,7 @@
     </label>
 
     <label for="submit">
-        <input type="submit" value="Search" id="submit"/>
+        <input style="font-size: 16px" type="submit" value="Search" id="submit"/>
     </label>
 </form>
 
@@ -34,6 +35,14 @@
     <span th:if="${searchResult==null}">Ничего не найдено</span>
 </div>
 
+<div class="MyFooter">
+    <hr/>
+    <p>
+        <a th:href="@{/}">Главная</a>
+        <a th:href="@{/general/new}">Добавить запись</a>
+        <a th:href="@{/general/print}">Печать</a>
+    </p>
+</div>
 
 </body>
 </html>

@@ -3,32 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Print</title>
-    <link th:href="@{/css/print.css}" rel="stylesheet">
+    <link th:href="@{/css/print_page.css}" rel="stylesheet">
 </head>
 <body>
 
-<div class="grid-container">
-    <div class="box">
+<div>
+    <form th:method="POST" th:action="@{/general/print}" th:object="${general}">
+        <span style="font-size: 21px; text-align: center">Печатать:</span>
 
-<form th:method="POST" th:action="@{/general/print}" th:object="${general}">
-    <span style="font-size: 21px; text-align: center">Печатать:</span>
+        <ul style="list-style: none; padding-inline-start: 0; font-size: 21px; font-family: 'Times New Roman', sans-serif">
 
-    <ul style="list-style: none; padding-inline-start: 0; font-size: 21px; font-family: 'Times New Roman', sans-serif">
+            <li role="option" th:each="general : ${generals}">
 
-        <li role="option" th:each="general : ${generals}">
+                <input type="checkbox" th:value="${general}" th:field="*{carNumber}" th:id="${general}"/>
+                <label th:for="${general}" th:text="${general}"></label>
 
-            <input type="checkbox" th:value="${general}" th:field="*{carNumber}" th:id="${general}"/>
-            <label th:for="${general}" th:text="${general}"></label>
+            </li>
+        </ul>
 
-        </li>
-    </ul>
-<!--    <select id="print" th:field="*{carNumber}" multiple="multiple">-->
-<!--        <option th:each="general : ${generals}" th:value="${general}" th:text="${general}">-->
-<!--    </select>-->
+        <input class="print_button" type="submit" value="Печать"/>
+    </form>
 
-<input type="submit" value="Печать" style="font-size: 16px" />
-</form>
-    </div>
+    <form th:method="POST" th:action="@{/general/print-all}">
+        <input class="print_button" type="submit" value="Распечатать все"/>
+    </form>
 </div>
+
+<div class="MyFooter">
+    <hr/>
+    <p>
+        <a th:href="@{/}">Главная</a>
+        <a th:href="@{/general/new}">Добавить запись</a>
+        <a th:href="@{/general/search}">Поиск</a>
+    </p>
+</div>
+
 </body>
 </html>

@@ -2,7 +2,6 @@ package com.port.DispatcherPortApp.controllers;
 
 import com.port.DispatcherPortApp.models.General;
 import com.port.DispatcherPortApp.services.GeneralService;
-import com.port.DispatcherPortApp.services.DocxCreation;
 import com.port.DispatcherPortApp.util.FieldsNames;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,16 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.parser.Entity;
 import javax.validation.Valid;
-import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Controller
 public class GeneralController {

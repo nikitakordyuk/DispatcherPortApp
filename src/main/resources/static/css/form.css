@@ -11,5 +11,12 @@ html, body {
   padding: 0;
 }
 
+.MyFooter {
+  word-spacing: 3px;
+  text-align: center;
+  font-size: 20px;
+  color: black;
+}
+
 
 
