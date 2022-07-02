@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -77,8 +75,9 @@ public class GeneralController {
     }
 
     @GetMapping("/general/search")
-    public String search(Model model, @ModelAttribute(name = "general") General general) {
+    public String search(Model model, @ModelAttribute("general") General general) {
         model.addAttribute("generals", generalService.generalList());
+        model.addAttribute("searchResult", Collections.emptyList());
 
         ArrayList<Object> list = new ArrayList<>(Arrays.asList(FieldsNames.fieldsNames().keySet().toArray()));
         model.addAttribute("options", list);
@@ -94,9 +93,15 @@ public class GeneralController {
         model.addAttribute("options", list);
 
         String optionEng = FieldsNames.fieldsNames().get(option.toString());
-        List<General> searchResult = generalService.search(optionEng, search);
 
+        List<General> searchResult = generalService.search(optionEng, search);
         model.addAttribute("searchResult", searchResult);
+
+        model.addAttribute("numbers",
+                searchResult
+                        .stream()
+                        .map(General::getId)
+                        .collect(Collectors.toList()));
 
         return "general/search";
     }
@@ -111,13 +116,4 @@ public class GeneralController {
 
         return "general/print";
     }
-
-//    @PostMapping("/general/print")
-//    public String print(@RequestParam("carNumber") List<String> print) throws IOException {
-//        DocxCreation docxCreation = new DocxCreation(generalService);
-//        docxCreation.createDocx(print);
-//
-//
-//        return "redirect:/general/print";
-//    }
 }

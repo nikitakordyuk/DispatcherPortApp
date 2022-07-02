@@ -12,7 +12,7 @@
     <!--/{queue}(queue=)-->
     <label for="options">Искать по:</label>
     <select th:object="${option}" id="options" name="option" style="font-size: 16px">
-        <option th:each="option : ${options}" th:value="${option}" th:text="${option}" >
+        <option th:each="option : ${options}" th:value="${option}" th:text="${option}">
         </option>
     </select>
 
@@ -27,12 +27,81 @@
 
 <br/>
 
-<div th:unless="${searchResult.isEmpty()}" th:each="result : ${searchResult}">
-    <p th:text="${result.getCarNumber() + ', ' + result.getTrailerNumber() + ', ' + result.getDriverLicenseNumber()
-       + ', ' + result.getNomenclature() + ', ' + result.getSender() + ', ' + result.getVehicleType() + ', '
-       + result.getPhoneNumber() + ', ' + result.getFullName() + ', ' + result.getDateOfCreation()
-       + ', ' + result.isCome()}"></p>
-    <span th:if="${searchResult==null}">Ничего не найдено</span>
+<span th:if="${searchResult.isEmpty()}">Ничего не найдено</span>
+
+<div class="table-wrapper" th:unless="${searchResult.isEmpty()}" th:object="${searchResult}">
+
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>Номер машины</th>
+            <th>Номер прицепа</th>
+            <th>Номер вод. удостоверения</th>
+            <th>Номеклатура</th>
+            <th>Отправитель</th>
+            <th>Тип</th>
+            <th>Номер телефона</th>
+            <th>ФИО</th>
+            <th>Дата создания</th>
+            <th>Заехал</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="result : ${searchResult}">
+
+            <td th:text="${result.getCarNumber()}">
+            </td>
+
+            <td th:text="${result.getTrailerNumber()}">
+            </td>
+
+            <td th:text="${result.getDriverLicenseNumber()}">
+            </td>
+
+            <td th:text="${result.getNomenclature()}">
+            </td>
+
+            <td th:text="${result.getSender()}">
+            </td>
+
+            <td th:text="${result.getVehicleType()}">
+            </td>
+
+            <td th:text="${result.getPhoneNumber()}">
+            </td>
+
+            <td th:text="${result.getFullName()}">
+            </td>
+
+            <td th:text="${result.getDateOfCreation()}">
+            </td>
+
+            <td>
+                <p th:if="${result.isCome()}" th:text="Да">
+                </p>
+                <p th:unless="${result.isCome()}" th:text="Нет">
+                </p>
+            </td>
+        </tr>
+        <tbody>
+    </table>
+
+    <div style="display: block; width: 100%;">
+        <form th:method="POST" th:action="@{/general/print-result-from-search}"
+              style="text-align: center">
+
+            <input style="display: none" type="checkbox"
+                   th:each="res : ${numbers}"
+                   th:value="${res}"
+                   name="res"
+                   checked/>
+
+            <input class="print_button"
+                   style="padding: 12px 27px 12px 27px; font-size: 19px; font-weight: normal; width: auto;"
+                   value="Распечатать"
+                   type="submit"/>
+        </form>
+    </div>
 </div>
 
 <div class="MyFooter">

@@ -1,11 +1,12 @@
 package com.port.DispatcherPortApp.controllers;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.port.DispatcherPortApp.models.General;
 import com.port.DispatcherPortApp.services.DocxCreation;
 import com.port.DispatcherPortApp.services.GeneralService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -30,7 +32,6 @@ public class RESTController {
         DocxCreation docxCreation = new DocxCreation(generalService);
 
         try(FileOutputStream docx = docxCreation.createDocx(print)) {
-
             createResponse(response);
         }
     }
@@ -40,7 +41,17 @@ public class RESTController {
         DocxCreation docxCreation = new DocxCreation(generalService);
 
         try(FileOutputStream docx = docxCreation.createDocxFromAll(generalService.generalList())) {
+            createResponse(response);
+        }
+    }
 
+    @PostMapping("/general/print-result-from-search")
+    public void printResultFromSearch(@RequestParam("res") List<Long> printFromSearch,
+                                      HttpServletResponse response) throws IOException
+    {
+        DocxCreation docxCreation = new DocxCreation(generalService);
+
+        try(FileOutputStream docx = docxCreation.createDocxFromLong(printFromSearch)) {
             createResponse(response);
         }
     }
