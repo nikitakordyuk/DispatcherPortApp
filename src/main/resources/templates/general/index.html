@@ -7,22 +7,6 @@
 </head>
 <body>
 
-<!--<div th:object="${generals}" th:each="general : ${generals}">-->
-<!--    <a th:href="@{/general/{id}(id=${general.getId()})}"-->
-<!--       th:text="${general.getCarNumber() + ', ' + general.getTrailerNumber() + ', ' + general.getDriverLicenseNumber()-->
-<!--       + ', ' + general.getNomenclature() + ', ' + general.getSender() + ', ' + general.getVehicleType() + ', '-->
-<!--       + general.getPhoneNumber() + ', ' + general.getFullName() + ', ' + general.getDateOfCreation()-->
-<!--       + ', ' + general.isCome()}">general</a>-->
-<!--</div>-->
-
-
-<!--<br/>-->
-<!--<hr/>-->
-<!--<a href="general/new">Добавить запись</a>-->
-<!--<br/>-->
-<!--<a href="general/search">Поиск</a>-->
-
-<h2></h2>
 <div class="table-wrapper" th:object="${general}" >
     <table class="fl-table">
         <thead>
