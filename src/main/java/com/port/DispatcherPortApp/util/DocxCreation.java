@@ -1,7 +1,7 @@
-package com.port.DispatcherPortApp.services;
+package com.port.DispatcherPortApp.util;
 
 import com.port.DispatcherPortApp.models.General;
-import com.port.DispatcherPortApp.util.FieldsNames;
+import com.port.DispatcherPortApp.services.GeneralService;
 import org.apache.poi.xwpf.usermodel.*;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.*;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
@@ -19,8 +19,9 @@ public class DocxCreation {
         this.generalService = generalService;
     }
 
-    public FileOutputStream createDocx(List<String> print) throws IOException {
+    public void createDocx(List<String> print) throws IOException {
         List<General> generals = new ArrayList<>();
+
         for (String carNumber : print) {
             try {
                 generals.add(generalService.findByCarNumber(carNumber));
@@ -29,21 +30,21 @@ public class DocxCreation {
             }
         }
 
-        return createDocxUtil(generals);
+        createDocxUtil(generals);
     }
 
-    public FileOutputStream createDocxFromLong(List<Long> print) throws IOException {
+    public void createDocxFromLong(List<Long> print) throws IOException {
         List<General> generals = new ArrayList<>();
 
         for (Long id : print) {
             generals.add(generalService.findGeneralById(id));
         }
 
-        return createDocxUtil(generals);
+        createDocxUtil(generals);
     }
 
-    public FileOutputStream createDocxFromAll(List<General> generals) throws IOException {
-        return createDocxUtil(generals);
+    public void createDocxFromAll(List<General> generals) throws IOException {
+        createDocxUtil(generals);
     }
 
     private static XWPFParagraph applyStyles(int rowNumber, int cellNumber, XWPFTable table) {
@@ -77,7 +78,7 @@ public class DocxCreation {
         }
     }
 
-    public static FileOutputStream createDocxUtil(List<General> generals) throws IOException {
+    public static void createDocxUtil(List<General> generals) throws IOException {
         XWPFDocument document = new XWPFDocument();
         changeOrientation(document, "landscape");
         document.removeBodyElement(0);
@@ -188,7 +189,5 @@ public class DocxCreation {
         document.write(out);
         out.close();
         document.close();
-
-        return out;
     }
 }
