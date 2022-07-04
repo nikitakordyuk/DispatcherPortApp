@@ -148,3 +148,7 @@ html, body {
         text-align: center;
     }
 }
+
+a:link, a:visited {
+    color: blue;
+}

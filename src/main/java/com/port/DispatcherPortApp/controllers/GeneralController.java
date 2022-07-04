@@ -4,6 +4,9 @@ import com.port.DispatcherPortApp.models.General;
 import com.port.DispatcherPortApp.services.GeneralService;
 import com.port.DispatcherPortApp.util.FieldsNames;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -54,8 +57,12 @@ public class GeneralController {
     }
 
     @GetMapping("/general/{id}/edit")
-    public String editPage(@PathVariable("id") long id, Model model) {
+    public String editPage(@PathVariable("id") long id, Model model, Authentication authentication) {
         model.addAttribute("general", generalService.findGeneralById(id));
+
+        if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
+            return "admin/edit_admin";
+        }
 
         return "general/edit";
     }

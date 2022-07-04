@@ -1,14 +1,16 @@
-*{
+* {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
 }
-body{
+
+body {
     font-family: "Times New Roman", sans-serif;
     font-size: 18px;
-    background: rgba( 71, 147, 227, 1);
+    background: rgba(71, 147, 227, 1);
 }
-h2{
+
+h2 {
     text-align: center;
     font-size: 18px;
     text-transform: uppercase;
@@ -17,6 +19,51 @@ h2{
     padding: 30px 0;
 }
 
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+input[type=text] {
+    font-family: "Times New Roman", sans-serif;
+    font-size: 19px;
+}
+
+/* Overwrite default styles of hr */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.registerbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 16px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    font-family: Georgia, Arial, sans-serif;
+    font-size: 19px;
+}
+
+.registerbtn:hover {
+    font-family: Georgia, Arial, sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    opacity: 1;
+}
 
 .deletebtn {
     background-color: #04AA6D;
@@ -36,7 +83,7 @@ h2{
     font-family: Georgia, Arial, sans-serif;
     font-size: 17px;
     font-weight: bold;
-    opacity:1;
+    opacity: 1;
 }
 
 .MyFooter {
@@ -46,13 +93,17 @@ h2{
     color: black;
 }
 
+.MyFooter a {
+    color: black;
+}
+
 /* Table Styles */
 
-.table-wrapper{
+.table-wrapper {
     font-family: "Times New Roman", sans-serif;
     letter-spacing: 0.4px;
     margin: 1.5% 70px 70px;
-    box-shadow: 0 35px 50px rgba( 0, 0, 0, 0.2 );
+    box-shadow: 0 35px 50px rgba(0, 0, 0, 0.2);
 }
 
 .fl-table {
@@ -103,7 +154,8 @@ h2{
         display: block;
         width: 100%;
     }
-    .table-wrapper:before{
+
+    .table-wrapper:before {
         content: "Scroll horizontally >";
         display: block;
         text-align: right;
@@ -111,20 +163,25 @@ h2{
         color: white;
         padding: 0 0 10px;
     }
+
     .fl-table thead, .fl-table tbody, .fl-table thead th {
         display: block;
     }
-    .fl-table thead th:last-child{
+
+    .fl-table thead th:last-child {
         border-bottom: none;
     }
+
     .fl-table thead {
         float: left;
     }
+
     .fl-table tbody {
         width: auto;
         position: relative;
         overflow-x: auto;
     }
+
     .fl-table td, .fl-table th {
         padding: 20px .625em .625em .625em;
         height: 60px;
@@ -136,26 +193,33 @@ h2{
         font-size: 13px;
         text-overflow: ellipsis;
     }
+
     .fl-table thead th {
         text-align: left;
         border-bottom: 1px solid #f7f7f9;
     }
+
     .fl-table tbody tr {
         display: table-cell;
     }
+
     .fl-table tbody tr:nth-child(odd) {
         background: none;
     }
+
     .fl-table tr:nth-child(even) {
         background: transparent;
     }
+
     .fl-table tr td:nth-child(odd) {
         background: #F8F8F8;
         border-right: 1px solid #E6E4E4;
     }
+
     .fl-table tr td:nth-child(even) {
         border-right: 1px solid #E6E4E4;
     }
+
     .fl-table tbody td {
         display: block;
         text-align: center;

@@ -97,11 +97,17 @@
 
 <div class="MyFooter">
     <hr/>
+
     <p>
         <a href="general/new">Добавить запись</a>
         <a href="general/print">Печать</a>
         <a href="general/search">Поиск</a>
     </p>
+
+    <form th:method="POST" th:action="@{/logout}">
+        <input class="registerbtn" type="submit" value="Log out">
+    </form>
+
 </div>
 
 </body>

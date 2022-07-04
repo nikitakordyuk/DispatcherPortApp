@@ -18,5 +18,9 @@ html, body {
   color: black;
 }
 
+a:link, a:visited {
+  color: blue;
+}
+
 
 
