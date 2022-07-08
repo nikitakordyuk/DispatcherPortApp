@@ -66,13 +66,7 @@
         <div style="color: red" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">fullName error</div>
         <br/>
 
-        <label for="dateOfCreation">Дата создания</label>
-        <input type="text" th:field="*{dateOfCreation}" id="dateOfCreation"/>
 
-        <div style="color: red" th:if="${#fields.hasErrors('dateOfCreation')}" th:errors="*{dateOfCreation}">
-            dateOfCreation
-            error
-        </div>
         <br/>
 
         <p> Заехал? <br/>

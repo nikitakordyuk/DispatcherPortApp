@@ -7,7 +7,11 @@
 body {
     font-family: "Times New Roman", sans-serif;
     font-size: 18px;
-    background: rgba(71, 147, 227, 1);
+}
+
+body a {
+    color: black;
+    text-decoration: none;
 }
 
 h2 {
@@ -95,6 +99,7 @@ hr {
 
 .MyFooter a {
     color: black;
+    text-decoration: underline;
 }
 
 /* Table Styles */
@@ -120,12 +125,12 @@ hr {
 
 .fl-table td, .fl-table th {
     text-align: center;
-    padding: 8px;
+    padding: 10px;
 }
 
 .fl-table td {
     border-right: 1px solid #f8f8f8;
-    font-size: 18px;
+    font-size: 19px;
 }
 
 /*.fl-table thead th {*/

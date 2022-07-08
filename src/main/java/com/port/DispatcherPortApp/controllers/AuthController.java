@@ -30,23 +30,6 @@ public class AuthController {
         return "auth/login";
     }
 
-//    @PostMapping("/process_login")
-//    public String processLogin(@RequestParam("password") String password,
-//                               @RequestParam("username") String username,
-//                               @ModelAttribute Person person)
-//    {
-//        person.setPassword(password);
-//        person.setUsername(username);
-//
-//        Authentication authentication = authenticationManager.authenticate(
-//                new UsernamePasswordAuthenticationToken(person.getPassword(), person.getUsername()));
-//
-//        System.out.println(authentication);
-//
-//
-//        return "";
-//    }
-
     @GetMapping("/registration")
     public String registrationPage(@ModelAttribute("person") Person person) {
         return "auth/registration";

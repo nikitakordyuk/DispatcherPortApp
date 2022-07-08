@@ -43,7 +43,6 @@ public class GeneralController {
 
     @PostMapping("/general/new")
     public String addNew(@ModelAttribute @Valid General general, BindingResult bindingResult) {
-        general.setDateOfCreation(Timestamp.valueOf(LocalDateTime.now()));
         generalService.saveGeneral(general);
 
         return "redirect:/";

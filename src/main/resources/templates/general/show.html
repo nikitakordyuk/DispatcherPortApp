@@ -66,7 +66,9 @@
 <div style="text-align: center;">
     <br/>
     <hr/>
-    <a class="MyFooter" th:href="@{/general/{id}/edit(id=${general.getId()})}">Редактировать</a>
+    <a class="MyFooter" th:href="@{/general/{id}/edit(id=${general.getId()})}" style="text-decoration: underline">
+        Редактировать
+    </a>
 
     <form th:method="DELETE" th:action="@{/general/{id}(id=${general.getId()})}">
         <input class="deletebtn" style="padding: 12px 27px 12px 27px; font-size: 19px; font-weight: normal; width: auto;"

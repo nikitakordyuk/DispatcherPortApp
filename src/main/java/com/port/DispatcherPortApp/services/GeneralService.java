@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +18,8 @@ import java.util.Optional;
 @Transactional
 public class GeneralService {
     private final GeneralRepository generalRepository;
+
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Autowired
     public GeneralService(GeneralRepository generalRepository) {
@@ -38,6 +43,7 @@ public class GeneralService {
     }
 
     public void saveGeneral(General general) {
+        general.setDateOfCreation(Timestamp.valueOf(DATE_FORMAT.format(Timestamp.from(Instant.now()))));
         generalRepository.save(general);
     }
 
