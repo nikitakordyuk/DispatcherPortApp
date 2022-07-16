@@ -14,8 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-//    private final AuthProviderImpl authProvider;
-
     private final PersonDetailsService personDetailsService;
 
     @Autowired
@@ -23,8 +21,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.personDetailsService = personDetailsService;
     }
 
-//    @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -40,15 +36,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/auth/login?error")
                 .and()
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/auth/login");
-
-//        return http.build();
     }
 
-//    @Bean
-//    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-//        return authenticationConfiguration.getAuthenticationManager();
-//    }
-//
     @Bean
     public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
